@@ -32,7 +32,7 @@ public class Setor implements Serializable {
 	public Setor(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}

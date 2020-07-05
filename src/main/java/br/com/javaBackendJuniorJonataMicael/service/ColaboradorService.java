@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.javaBackendJuniorJonataMicael.dto.ColaboradorDTO;
@@ -14,6 +16,7 @@ import br.com.javaBackendJuniorJonataMicael.exception.LimiteIdadeAtingidoExcepti
 import br.com.javaBackendJuniorJonataMicael.mapper.ColaboradorMapper;
 import br.com.javaBackendJuniorJonataMicael.model.Colaborador;
 import br.com.javaBackendJuniorJonataMicael.repository.ColaboradorRepository;
+import br.com.javaBackendJuniorJonataMicael.response.Response;
 import br.com.javaBackendJuniorJonataMicael.util.DatasUtil;
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -61,10 +64,10 @@ public class ColaboradorService {
 	 */
 	public Colaborador buscarPorId(Integer id) throws ObjectNotFoundException {
 		logger.info("Buscando colaborador [id = " + id + "]");
-		Optional<Colaborador> colaborador = repoColaborador.findById(id); 
+		Optional<Colaborador> colaborador = repoColaborador.findById(id);
 		
 		return colaborador.orElseThrow(() -> new ObjectNotFoundException(
-				"Colaborador não encontrado"));
+					"Colaborador não encontrado"));
 	}
 	
 	/**
@@ -72,12 +75,10 @@ public class ColaboradorService {
 	 * agrupados por setor
 	 * @return List<ColaboradorDTO>
 	 */
-	public List<ColaboradorDTO> buscarTodos() {
+	public List<Colaborador> buscarTodos() {
 		logger.info("Buscando todos os colaboradores");
-		List<ColaboradorDTO> colaboradores =  mapper.toColaboradorDTOList((repoColaborador.findAll()));
 		
-		logger.info("Retornando todos os colaboradores");
-		return colaboradores;
+		return repoColaborador.findAll();
 	}
 	
 	/**
@@ -88,13 +89,15 @@ public class ColaboradorService {
 	 * @throws ColaboradorNaBlacklistException
 	 * @throws LimiteIdadeAtingidoException
 	 */
-	public ColaboradorDTO inserir(Colaborador colaborador) throws ColaboradorNaBlacklistException, LimiteIdadeAtingidoException {
+	public ResponseEntity<Response<Colaborador>> inserir(ColaboradorDTO colaboradorDTO) throws ColaboradorNaBlacklistException, LimiteIdadeAtingidoException {
 		logger.info("Verificando se colaborador existe na blackListApi");
 		
-		if(blackListApiService.verificarColaboradorPorCpf(colaborador.getCpf())) {
+		if(blackListApiService.verificarColaboradorPorCpf(colaboradorDTO.getCpf())) {
 			logger.info("Colaborador não encontrado na blackListApi");
 			
-			int idadeColaborador = DatasUtil.calculaIdade(colaborador.getDataNascimento());
+			Response<Colaborador> response = new Response<Colaborador>();
+			
+			int idadeColaborador = DatasUtil.calculaIdade(colaboradorDTO.getDataNascimento());
 			
 			if(idadeColaborador > IDADE_MAX) {
 				
@@ -104,18 +107,18 @@ public class ColaboradorService {
 										);
 				
 				if (insere) {
-					repoColaborador.save(colaborador);
-					return mapper.toColaboradorDTO(colaborador);
+					response.setData(repoColaborador.save(mapper.toColaborador(colaboradorDTO)));
+					logger.info("Colaborador inserido com sucesso");
+					return ResponseEntity.status(HttpStatus.CREATED).body(response);
 				} else {
 					throw new LimiteIdadeAtingidoException("Numero máximo de colaboradores maiores que "
 													+ IDADE_MAX + " anos, operação cancelada");
 				}
 			} else {
-				repoColaborador.save(colaborador);
+				response.setData(repoColaborador.save(mapper.toColaborador(colaboradorDTO)));
 				logger.info("Colaborador inserido com sucesso");
+				return ResponseEntity.status(HttpStatus.CREATED).body(response);
 			}
-			
-			return mapper.toColaboradorDTO(colaborador);
 		} else {
 			throw new ColaboradorNaBlacklistException("Colaborador encontrado na black list, inserção cancelada");
 		}

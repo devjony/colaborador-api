@@ -2,6 +2,10 @@ package br.com.javaBackendJuniorJonataMicael.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
 import br.com.javaBackendJuniorJonataMicael.model.Setor;
 
 public class ColaboradorDTO {
@@ -26,6 +30,8 @@ public class ColaboradorDTO {
 		this.id = id;
 	}
 	
+	@NotNull(message = "CPF é uma informação obrigatória")
+	@Length(min = 11, max = 11, message = "CPF deve conter onze números")
 	public String getCpf() {
 		return cpf;
 	}
@@ -34,6 +40,7 @@ public class ColaboradorDTO {
 		this.cpf = cpf;
 	}
 
+	@NotNull(message = "Nome é uma informação obrigatória")
 	public String getNome() {
 		return nome;
 	}
@@ -42,6 +49,7 @@ public class ColaboradorDTO {
 		this.nome = nome;
 	}
 
+	@NotNull(message = "Telefone é uma informação obrigatória")
 	public String getTelefone() {
 		return telefone;
 	}
@@ -50,6 +58,7 @@ public class ColaboradorDTO {
 		this.telefone = telefone;
 	}
 
+	@NotNull(message = "Email é uma informação obrigatória")
 	public String getEmail() {
 		return email;
 	}
@@ -58,6 +67,7 @@ public class ColaboradorDTO {
 		this.email = email;
 	}
 
+	@NotNull(message = "Data de Nascimento é uma informação obrigatória")
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}

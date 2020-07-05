@@ -2,11 +2,14 @@ package br.com.javaBackendJuniorJonataMicael.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import br.com.javaBackendJuniorJonataMicael.dto.ColaboradorDTO;
 import br.com.javaBackendJuniorJonataMicael.exception.ColaboradorNaBlacklistException;
 import br.com.javaBackendJuniorJonataMicael.exception.LimiteIdadeAtingidoException;
 import br.com.javaBackendJuniorJonataMicael.model.Colaborador;
+import br.com.javaBackendJuniorJonataMicael.response.Response;
 import br.com.javaBackendJuniorJonataMicael.service.ColaboradorService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,10 +51,10 @@ public class ColaboradorController {
 	 */
 	@GetMapping
 	@ApiOperation(value = "Retorna uma lista de colaboradores")
-	public ResponseEntity<List<ColaboradorDTO>> buscarTodos() {
+	public ResponseEntity<List<Colaborador>> buscarTodos() {
 		logger.info("Request recebido [GET][/colaborador]");
 		
-		return ResponseEntity.ok(colaboradorService.buscarTodos());
+		return ResponseEntity.ok().body(colaboradorService.buscarTodos());
 	}
 	
 	/**
@@ -61,10 +65,12 @@ public class ColaboradorController {
 	 */
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Retorna um colaborador da base de dados")
-	public ResponseEntity<Colaborador> buscar(@PathVariable("id") Integer id) throws ObjectNotFoundException {
+	public ResponseEntity<Response<Colaborador>> buscar(@PathVariable("id") Integer id) throws ObjectNotFoundException {
 		logger.info("Request recebido [GET][/colaborador/" + id + "]");
 		
-		return ResponseEntity.ok(colaboradorService.buscarPorId(id));
+		Response<Colaborador> response = new Response<Colaborador>();
+		response.setData(colaboradorService.buscarPorId(id));
+		return ResponseEntity.ok().body(response);
 	}
 	
 	/**
@@ -77,10 +83,17 @@ public class ColaboradorController {
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@ApiOperation(value = "Insere um colaborador na base de dados")
-	public ColaboradorDTO inserir(@RequestBody Colaborador colaborador) throws ColaboradorNaBlacklistException, LimiteIdadeAtingidoException {
+	public ResponseEntity<Response<Colaborador>> inserir(@Valid @RequestBody ColaboradorDTO colaboradorDTO, BindingResult result) throws ColaboradorNaBlacklistException, LimiteIdadeAtingidoException {
 		logger.info("Request recebido [POST][/colaborador]");
 		
-		return colaboradorService.inserir(colaborador);
+		Response<Colaborador> response = new Response<Colaborador>();
+		
+		if(result.hasErrors()) {
+			result.getAllErrors().forEach(error -> response.getErros().add(error.getDefaultMessage()));
+			return ResponseEntity.badRequest().body(response);
+		}
+		
+		return colaboradorService.inserir(colaboradorDTO);
 	}
 	
 	/**
@@ -90,7 +103,7 @@ public class ColaboradorController {
 	 */
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "Remove um colaborador da base de dados")
-	public ResponseEntity<Colaborador> remover(@PathVariable("id") Integer id) {
+	public ResponseEntity<Response<Colaborador>> remover(@PathVariable("id") Integer id) {
 		logger.info("Request recebido [DELETE][/colaborador/" + id + "]");
 		
 		colaboradorService.remover(id);
