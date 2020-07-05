@@ -1,4 +1,4 @@
-package br.com.javaBackendJuniorJonataMicael.domain;
+package br.com.javaBackendJuniorJonataMicael.model;
 
 import java.io.Serializable;
 
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "setores")
+@Table(name = "setor")
 public class Setor implements Serializable {
 
 	/**

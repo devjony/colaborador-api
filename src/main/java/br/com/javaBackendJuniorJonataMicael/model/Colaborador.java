@@ -1,4 +1,4 @@
-package br.com.javaBackendJuniorJonataMicael.domain;
+package br.com.javaBackendJuniorJonataMicael.model;
 
 import java.io.Serializable;
 import java.util.Date;
