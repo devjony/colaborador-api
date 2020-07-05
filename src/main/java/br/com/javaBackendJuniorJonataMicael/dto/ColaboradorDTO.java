@@ -17,7 +17,7 @@ public class ColaboradorDTO {
 	public ColaboradorDTO() {
 		
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
