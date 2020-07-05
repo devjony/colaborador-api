@@ -6,6 +6,7 @@ import br.com.javaBackendJuniorJonataMicael.model.Setor;
 
 public class ColaboradorDTO {
 	
+	private Integer id;
 	private String cpf;
 	private String nome;
 	private String telefone;
@@ -17,6 +18,14 @@ public class ColaboradorDTO {
 		
 	}
 
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
 	public String getCpf() {
 		return cpf;
 	}

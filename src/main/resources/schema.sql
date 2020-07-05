@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS colaborador(
 	nome VARCHAR(40) NOT NULL,
 	telefone VARCHAR(20) NOT NULL,
 	email VARCHAR(40) NOT NULL UNIQUE,
-	data_nascimento DATE NOT NULL,
+	data_nascimento TIMESTAMP NOT NULL,
 	setor_id INT NOT NULL,
 	
 	CONSTRAINT fk_setor FOREIGN KEY (setor_id) REFERENCES setor (id)

@@ -11,6 +11,7 @@
 	<groupId>br.com.javaBackendJuniorJonataMicael</groupId>
 	<artifactId>JavaBackendJuniorJonataMicael</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>JavaBackendJuniorJonataMicael</name>
 	<description>Rest API para cadastro de colaboradores</description>
 
