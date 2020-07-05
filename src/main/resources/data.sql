@@ -1,4 +1,4 @@
-INSERT INTO setores(descricao) VALUES ('teste')
-INSERT INTO setores(descricao) VALUES ('teste2')
-INSERT INTO setores(descricao) VALUES ('teste3')
-INSERT INTO setores(descricao) VALUES ('teste4')
+INSERT INTO setor(descricao) VALUES ('Administrativo');
+INSERT INTO setor(descricao) VALUES ('Financeiro');
+INSERT INTO setor(descricao) VALUES ('Operacoes');
+INSERT INTO setor(descricao) VALUES ('Marketing');
