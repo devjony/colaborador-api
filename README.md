@@ -64,3 +64,11 @@ No diretório raíz do projeto tem uma colection de testes que pode ser importad
 
 Caso seu projeto esteja rodando na porta e ip padrão, acesse:
 > #### localhost:8080/swagger-ui.html ####
+
+## Backlog ##
+
+1. CriteriaAPI: groupBy e paginação
+2. Validar: colaborador < 18 anos, max. 20% / setor
+3. Tratar: response de exceptions não lançadas por mim
+4. Corrigir: docker não enxerga banco de dados local
+5. Implementar: front-end gerenciado por npm (react)
