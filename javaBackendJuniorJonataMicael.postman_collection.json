@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "9863588e-ba77-41bd-8be8-a3933128befa",
+		"name": "javaBackendJuniorJonataMicael",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "blackListApi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5e74cb4b9dff120016353b04.mockapi.io/api/v1/blacklist",
+					"protocol": "https",
+					"host": [
+						"5e74cb4b9dff120016353b04",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"v1",
+						"blacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blackListApi?search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://5e74cb4b9dff120016353b04.mockapi.io/api/v1/blacklist?search=77386499094",
+					"protocol": "https",
+					"host": [
+						"5e74cb4b9dff120016353b04",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"api",
+						"v1",
+						"blacklist"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "77386499094"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InserirColaboradorBlackList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"77386499094\",\n    \"nome\": \"devjony\",\n    \"telefone\": \"975099889\",\n    \"email\": \"jonatamicae@gmail.com\",\n    \"dataNascimento\": \"22/09/1992\",\n    \"setor\": {\n        \"id\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inserirColaborador",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"12345678912\",\n    \"nome\": \"devjony\",\n    \"telefone\": \"975099889\",\n    \"email\": \"jonatamicae@gmail.com\",\n    \"dataNascimento\": \"22/09/1992\",\n    \"setor\": {\n        \"id\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "inserirColaboradorIdadeMax",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"12345678912\",\n    \"nome\": \"devjony\",\n    \"telefone\": \"975099889\",\n    \"email\": \"jonatamicae@gmail.com\",\n    \"dataNascimento\": \"22/09/1932\",\n    \"setor\": {\n        \"id\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscarPorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscarTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removerColaborador",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/colaborador/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"colaborador",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

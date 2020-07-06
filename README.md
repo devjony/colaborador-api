@@ -10,6 +10,7 @@ Para executar o projeto será necessário instalar os seguintes programas:
 * [JDK8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
 * [Maven](https://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache/)
 * [MySql](https://www.mysql.com/downloads/)
+* [PostMan](https://www.postman.com/downloads/)
 
 ## Desenvolvimento ##
 
@@ -52,7 +53,12 @@ mvn clean install
 
 ![image](https://user-images.githubusercontent.com/51264643/86551102-89ca1a80-bf1a-11ea-8c2b-608d7d99af76.png)
 
+### Banco de Dados em memória H2 ###
+
+No diretório raíz do projeto tem uma colection de testes que pode ser importada para o postman para realizar alguns testes básicos
+> #### javaBackendJuniorJonataMicael.postman_collection.json ####
+
 ## Documentaçao ##
 
 Caso seu projeto esteja rodando na porta e ip padrão, acesse:
-> ### localhost:8080/swagger-ui.html ###
+> #### localhost:8080/swagger-ui.html ####
