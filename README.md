@@ -1,16 +1,18 @@
 # CadastroColaborAPI #
 
-Este projeto visa tem como objetivo otimizar o gerenciamento de colaboradores de uma empresa.
+Este projeto tem como objetivo otimizar o gerenciamento de colaboradores de uma empresa.
 
 ## Começando ##
 
 Para executar o projeto será necessário instalar os seguintes programas:
 
-* [Eclipse](https://www.eclipse.org/downloads/packages/release/mars/r/eclipse-ide-java-ee-developers)
-* [JDK8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-* [Maven](https://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache/)
-* [MySql](https://www.mysql.com/downloads/)
-* [PostMan](https://www.postman.com/downloads/)
+* Instalar o [Git](https://git-scm.com/downloads)
+* Instalar o [JDK8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+* Instalar o [Maven](https://maven.apache.org/download.cgi?Preferred=ftp://mirror.reverse.net/pub/apache/)
+* Instalar o [MySql](https://www.mysql.com/downloads/)
+* Instalar o [Eclipse](https://www.eclipse.org/downloads/packages/release/mars/r/eclipse-ide-java-ee-developers)
+* Instalar o [PostMan](https://www.postman.com/downloads/)
+
 
 ## Desenvolvimento ##
 
@@ -39,7 +41,7 @@ mvn clean install
 >```root``` por ```usuario do banco``` |
 >```password``` por ```senha do banco```
 
-### Banco de Dados em memória H2 ###
+### Banco de Dados em memória H2 (Alternativa)###
 
 ![image](https://user-images.githubusercontent.com/51264643/86550542-08be5380-bf19-11ea-8e1c-62501b212798.png)
 
