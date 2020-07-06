@@ -53,9 +53,9 @@ mvn clean install
 
 ![image](https://user-images.githubusercontent.com/51264643/86551102-89ca1a80-bf1a-11ea-8c2b-608d7d99af76.png)
 
-### Banco de Dados em memória H2 ###
+### Testes ###
 
-No diretório raíz do projeto tem uma colection de testes que pode ser importada para o postman para realizar alguns testes básicos
+No diretório raíz do projeto tem uma colection de testes que pode ser importada para o postman com alguns testes já preparados
 > #### javaBackendJuniorJonataMicael.postman_collection.json ####
 
 ## Documentaçao ##
