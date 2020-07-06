@@ -14,8 +14,6 @@ Para executar o projeto será necessário instalar os seguintes programas:
 ## Desenvolvimento ##
 
 Após instalar os programas acima, abra o terminal, vá a um diretório de sua preferência e execute os códigos abaixo:
-```
-```
 ```shell
 git clone https://devjony@bitbucket.org/devjony/javabackendjuniorjonatamicael.git
 ```
@@ -23,8 +21,6 @@ git clone https://devjony@bitbucket.org/devjony/javabackendjuniorjonatamicael.gi
 ## Construçao (Build) ##
 
 Para que o maven baixe todas as depnências necessárias para construir o projeto, execute o comando abaixo:
-```
-```
 ```shell
 mvn clean install
 ```
