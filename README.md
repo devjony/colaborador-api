@@ -37,19 +37,23 @@ mvn clean install
 1. Crie previamente um banco de dados no MySql com o nome de sua preferência.
 2. Navegue até o diretório ```src/main/resources/``` e abra o arquivo ```application.properties```
 3. Substitua os trechos:
->```localhost/colaboradordb``` por ```seu ip/nome do seu banco``` |
->```root``` por ```usuario do banco``` |
+>```localhost/colaboradordb``` por ```seu ip/nome do seu banco```
+>
+>```root``` por ```usuario do banco```
+>
 >```password``` por ```senha do banco```
 
-### Banco de Dados em memória H2 (Alternativa)###
+### Banco de Dados em memória H2 (Alternativa) ###
 
 ![image](https://user-images.githubusercontent.com/51264643/86550542-08be5380-bf19-11ea-8e1c-62501b212798.png)
 
 1. Comente todo o codigo relacionada ao MySql.
 2. Descomente todo o codigo relacionado ao banco H2.
 3. Substitua os trechos:(Opcional)
->```testdb``` por ```nome do banco desejado``` |
->```username=sa``` por ```username="username desejado"``` |
+>```testdb``` por ```nome do banco desejado```
+>
+>```username=sa``` por ```username="username desejado"```
+>
 >```password=sa``` por ```password="password desejado"```
 4. Estes dados serao utilizados para acessar o console do banco em: ```localhost:8080/h2-console```
 
